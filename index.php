@@ -1,7 +1,10 @@
 <?php
 $Szoveg="";
 if(isset ($_POST['topic'])){
-    $Szoveg = "kaptam uj topic post adatot";
+   $topics = [];
+   array_push($topics,$_POST['topic']);
+   $jsonString = json_encode($topics);
+   $Szoveg=$jsonString;
 }
 ?>
 
