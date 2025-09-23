@@ -7,16 +7,17 @@ if(file_exists($filename)){
 else{
     $topics=[];
 }
-$Szoveg="";
-if(isset ($_POST['topic'])){
-   $topics = [];
+ 
+if(isset ($_POST['action']))
+    {
+    if($_POST['action'] == 'add'){
    array_push($topics,$_POST['topic']);
    $jsonString = json_encode($topics);
-   $Szoveg=$jsonString;
-  file_put_contents($filename,$jsonString);
+   file_put_contents($filename,$jsonString);
+    }
 }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -25,16 +26,27 @@ if(isset ($_POST['topic'])){
     <title>Forum</title>
 </head>
 <body>
-
-<?php
-echo $Szoveg;
-?>
+   
     <h1>Témák:</h1>
-
+ 
+    <ul>
+<?php
+foreach($topics as $value)
+    {
+    echo "<li>" . $value . '
+    <form method="post">
+    <input type="hidden" name="topic" value="'.$value. '">
+    <input type="hidden" name="action" value="delete">
+    <input type="submit" value="Törlés">
+    </form>';
+    }
+    ?>
+    </ul>
     <form method = "POST">
+    <input type="hidden" name="action" value="add">
     <input type="text" name = "topic">
     <input type="submit" value = "save">
     </form>
-
+ 
 </body>
 </html>
