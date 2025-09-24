@@ -9,22 +9,20 @@ if(file_exists($filename)){
 }
 
 if(isset($_POST['action'])) {
-   
-    if ($_POST['action'] == 'delete') {
-        
-        $deleteId = $_POST['id'];
+if ($_POST['action'] == 'delete')
+     {
+    $deleteId = $_POST['id'];
 
-       
-        foreach ($topics as $key => $topic) {
-            if ($topic->id == $deleteId) {
+    foreach ($topics as $key => $topic) 
+        {
+            if ($topic->id == $deleteId)
+            {
                 unset($topics[$key]);
                 break;
             }
         }
 
-     
         $topics = array_values($topics);
-
         $jsonString = json_encode($topics, JSON_PRETTY_PRINT);
         file_put_contents($filename, $jsonString);
     }
@@ -32,20 +30,19 @@ if(isset($_POST['action'])) {
     elseif ($_POST['action'] == 'add') {
      
         $lastId = 0;
-        if (!empty($topics)) {
+        if (!empty($topics)) 
+        {
             $lastId = end($topics)->id; 
         }
 
-      
-        $newId = $lastId - 1;
+        $newId = $lastId +1;
 
-     
-        array_push($topics, (object)[
+     array_push($topics, (object)
+        [
             "id" => $newId,
             "name" => $_POST['topic']
         ]);
 
-       
         $jsonString = json_encode($topics, JSON_PRETTY_PRINT);
         file_put_contents($filename, $jsonString);
     }
