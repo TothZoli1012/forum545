@@ -11,10 +11,21 @@ else{
 if(isset ($_POST['action']))
     {
     if($_POST['action'] == 'add'){
-   array_push($topics,$_POST['topic']);
-   $jsonString = json_encode($topics);
+   array_push($topics,
+        (object)
+        [
+            "id" => "1234",
+            "name" => $_POST['topic']
+        ]
+        );
+   $jsonString = json_encode($topics, JSON_PRETTY_PRINT);
    file_put_contents($filename,$jsonString);
     }
+    elseif(($_POST['action'] == 'delete'))
+    {
+        
+    }
+
 }
 ?>
  
@@ -33,9 +44,9 @@ if(isset ($_POST['action']))
 <?php
 foreach($topics as $value)
     {
-    echo "<li>" . $value . '
+    echo "<li>" . $value->name . '
     <form method="post">
-    <input type="hidden" name="topic" value="'.$value. '">
+    <input type="hidden" name="id" value="'.$value->id. '"> 
     <input type="hidden" name="action" value="delete">
     <input type="submit" value="Törlés">
     </form>';

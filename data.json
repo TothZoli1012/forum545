@@ -1,1 +1,18 @@
-["asd"]
+[
+    {
+        "id": "1",
+        "name": "kutya"
+    },
+    {
+        "id": "2",
+        "name": "asd"
+    },
+    {
+        "id": "3",
+        "name": "citrom"
+    },
+    {
+        "id": "1234",
+        "name": "citrom"
+    }
+]
