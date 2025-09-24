@@ -10,7 +10,7 @@ if(file_exists($filename)){
 
 if(isset($_POST['action'])) {
 if ($_POST['action'] == 'delete')
-     {
+    {
     $deleteId = $_POST['id'];
 
     foreach ($topics as $key => $topic) 
@@ -27,7 +27,8 @@ if ($_POST['action'] == 'delete')
         file_put_contents($filename, $jsonString);
     }
 
-    elseif ($_POST['action'] == 'add') {
+    elseif ($_POST['action'] == 'add') 
+        {
      
         $lastId = 0;
         if (!empty($topics)) 
@@ -45,7 +46,7 @@ if ($_POST['action'] == 'delete')
 
         $jsonString = json_encode($topics, JSON_PRETTY_PRINT);
         file_put_contents($filename, $jsonString);
-    }
+        }
 }
 ?>
 
