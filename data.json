@@ -1,18 +1,8 @@
 [
     {
         "id": 1,
-        "name": "citrom"
-    },
-    {
-        "id": 2,
-        "name": "adasda"
-    },
-    {
-        "id": 3,
-        "name": "alma"
-    },
-    {
-        "id": 4,
-        "name": "valami"
+        "name": "b\u00e9la",
+        "created_at": "2025-09-30 11:08:43",
+        "comments": []
     }
 ]
